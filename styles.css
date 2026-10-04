@@ -3,7 +3,6 @@
   src: url("fonts/Bembo.woff2") format("woff2");
   font-display: swap;
 }
-
 @font-face {
   font-family: "Winfield Helvetica";
   src: url("fonts/HelveticaNeueThin.woff2") format("woff2");
@@ -15,7 +14,7 @@
   --white: #fff;
   --page-pad: clamp(28px, 10.35vw, 168px);
   --top-pad: clamp(34px, 5.25vw, 85px);
-  --gap: clamp(24px, 3.5vw, 57px);
+  --nav-gap: clamp(22px, 2.9vw, 47px);
 }
 
 * { box-sizing: border-box; }
@@ -40,45 +39,42 @@ body {
   grid-template-rows: auto minmax(0, 1fr) auto;
   gap: clamp(30px, 2.5vw, 40px);
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(7px);
   animation: pageIn 720ms cubic-bezier(.22,.61,.36,1) 80ms forwards;
 }
 
-/* The three-column grid keeps WINFIELD mathematically centered.
-   Both navigation zones occupy equal-width columns. */
 .site-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   min-height: 48px;
 }
 
+.header-zone {
+  min-width: 0;
+  display: flex;
+}
+
+.header-zone-left { justify-content: flex-start; }
+.header-zone-right { justify-content: flex-end; }
+
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--gap);
-  min-width: 0;
-}
-
-.nav-right {
-  justify-content: flex-end;
-}
-
-.nav-link,
-.wordmark {
-  position: relative;
-  color: var(--white);
-  text-decoration: none;
+  gap: var(--nav-gap);
 }
 
 .nav-link {
+  position: relative;
+  color: var(--white);
+  text-decoration: none;
   font-family: "Winfield Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: clamp(11px, .9vw, 15px);
-  font-weight: 200;
-  letter-spacing: .29em;
+  font-size: clamp(11px, .88vw, 15px);
+  font-weight: 300;
+  letter-spacing: .255em;
   white-space: nowrap;
   padding: 9px 0 12px;
-  opacity: .96;
+  opacity: .86;
   transition: opacity 180ms ease;
 }
 
@@ -93,9 +89,7 @@ body {
   opacity: 0;
   transform: scaleX(.55);
   transform-origin: center;
-  transition:
-    opacity 210ms ease,
-    transform 210ms cubic-bezier(.22,.61,.36,1);
+  transition: opacity 210ms ease, transform 210ms cubic-bezier(.22,.61,.36,1);
 }
 
 .nav-link:hover,
@@ -109,21 +103,20 @@ body {
   transform: scaleX(1);
 }
 
-/* Let the Bembo file itself control its weight. */
 .wordmark {
+  color: var(--white);
+  text-decoration: none;
   font-family: "Winfield Bembo", "Bembo", Georgia, serif;
   font-size: clamp(34px, 3vw, 51px);
-  line-height: 1;
-  letter-spacing: -.025em;
+  line-height: .94;
+  letter-spacing: -.018em;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
   transition: opacity 180ms ease;
 }
 
 .wordmark:hover,
-.wordmark:focus-visible {
-  opacity: .9;
-}
+.wordmark:focus-visible { opacity: .9; }
 
 .hero {
   position: relative;
@@ -146,58 +139,44 @@ body {
   opacity: 0;
   transition: opacity 650ms ease;
 }
-
-.video.ready {
-  opacity: 1;
-}
+.video.ready { opacity: 1; }
 
 .placeholder {
   opacity: 1;
   transition: opacity 650ms ease;
 }
-
-.placeholder.hidden {
-  opacity: 0;
-}
+.placeholder.hidden { opacity: 0; }
 
 .locations {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  column-gap: clamp(11px, 1.1vw, 18px);
+  column-gap: clamp(11px, 1.05vw, 17px);
   row-gap: 5px;
   font-family: "Winfield Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: clamp(10px, .9vw, 15px);
-  font-weight: 200;
-  letter-spacing: .27em;
+  font-size: clamp(10px, .88vw, 15px);
+  font-weight: 300;
+  letter-spacing: .235em;
   line-height: 1.4;
+  opacity: .86;
   white-space: nowrap;
 }
 
 .locations i {
   font-style: normal;
-  opacity: .85;
+  opacity: .78;
 }
 
 @keyframes pageIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 1050px) {
   :root {
     --page-pad: 5vw;
-    --gap: 4vw;
+    --nav-gap: 3.5vw;
   }
-
-  .site-header {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .nav-right { display: none; }
 }
 
 @media (max-width: 700px) {
@@ -205,29 +184,23 @@ body {
     padding: 26px 20px 24px;
     gap: 22px;
   }
-
   .site-header {
     grid-template-columns: 1fr auto;
   }
-
-  .nav-left { gap: 18px; }
-
+  .header-zone-right { display: none; }
+  .nav { gap: 18px; }
   .nav-link {
     font-size: 9px;
-    letter-spacing: .18em;
+    letter-spacing: .17em;
   }
-
   .nav-left .nav-link:first-child { display: none; }
-
   .wordmark { font-size: 31px; }
-
   .hero { min-height: 58vh; }
-
   .locations {
     white-space: normal;
     text-align: center;
     font-size: 8px;
-    letter-spacing: .17em;
+    letter-spacing: .15em;
   }
 }
 
@@ -237,10 +210,5 @@ body {
     opacity: 1;
     transform: none;
   }
-
-  .nav-link::after,
-  .video,
-  .placeholder {
-    transition: none;
-  }
+  .nav-link::after, .video, .placeholder { transition: none; }
 }
