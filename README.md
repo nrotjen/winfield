@@ -1,37 +1,18 @@
-# WINFIELD — Homepage
+# WINFIELD — Homepage v2
 
-This is the first homepage build for Winfield.
+Typography/layout refinement:
+- Right navigation order: CAREERS / PRESS / CONTACT
+- Header uses equal-width left/right zones so WINFIELD stays optically and mathematically centered
+- Bembo logo no longer receives an artificial 700 weight
+- Bembo tracking adjusted for a cleaner wordmark
+- Helvetica Neue is now set up for a Thin webfont rather than Ultra Light
+- Existing fade/hover interactions retained
 
-## What is included
+Font files expected:
+- fonts/Bembo.woff2
+- fonts/HelveticaNeueThin.woff2
 
-- Full black, full-screen institutional layout
-- Bembo wordmark
-- Helvetica Neue Ultra Light-style navigation/location typography
-- Cinematic central media area
-- Gentle page-load fade
-- Subtle animated underline on navigation hover
-- Responsive layout for desktop and mobile
-- Reduced-motion accessibility support
+Video:
+- assets/homepage.mp4
 
-## Before publishing
-
-1. Put your licensed Bembo webfont at:
-   `fonts/Bembo.woff2`
-
-2. Put your licensed Helvetica Neue Ultra Light webfont at:
-   `fonts/HelveticaNeueUltraLight.woff2`
-
-3. Put the final homepage video at:
-   `assets/homepage.mp4`
-
-The video should ideally be an MP4 (H.264 video + AAC audio if audio is ever needed; the homepage currently mutes it).
-
-## GitHub Pages
-
-Create a GitHub repository, upload the contents of this folder, then:
-
-Repository → Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save.
-
-For a custom domain, add it under Settings → Pages → Custom domain.
-
-The homepage currently uses `assets/homepage-placeholder.jpg` until `homepage.mp4` is uploaded.
+The screenshot placeholder remains until the MP4 is added.

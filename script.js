@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   video.addEventListener("loadeddata", showVideo, { once: true });
   video.addEventListener("canplay", showVideo, { once: true });
 
-  // If no video has been uploaded yet, the screenshot placeholder remains.
   video.addEventListener("error", () => {
     video.classList.remove("ready");
     placeholder.classList.remove("hidden");
